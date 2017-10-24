@@ -30,7 +30,7 @@ class GameCollectionViewController: UICollectionViewController {
     
     fileprivate var timer = Timer()
     
-    internal var scoreTableViewController = ScoreTableViewController()
+    internal var scoreTableViewController = ScoreViewController()
     
     fileprivate var indiceDepart = -1
     

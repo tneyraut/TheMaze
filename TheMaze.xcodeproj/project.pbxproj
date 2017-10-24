@@ -17,10 +17,14 @@
 		E880BB3B1D327B8D001EF7E3 /* TheMazeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB3A1D327B8D001EF7E3 /* TheMazeTests.swift */; };
 		E880BB461D327B8D001EF7E3 /* TheMazeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB451D327B8D001EF7E3 /* TheMazeUITests.swift */; };
 		E880BB541D327BD2001EF7E3 /* UpLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB531D327BD2001EF7E3 /* UpLineView.swift */; };
-		E880BB561D327C32001EF7E3 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB551D327C32001EF7E3 /* ScoreTableViewController.swift */; };
-		E880BB581D327D27001EF7E3 /* TableViewCellWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB571D327D27001EF7E3 /* TableViewCellWithImage.swift */; };
+		E880BB561D327C32001EF7E3 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB551D327C32001EF7E3 /* ScoreViewController.swift */; };
 		E880BB5A1D327E7B001EF7E3 /* GameCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */; };
 		E880BB5C1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */; };
+		E8DCE6071F9FB65400F598FA /* RoundedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */; };
+		E8DCE6091F9FB66D00F598FA /* ImageTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */; };
+		E8DCE60B1F9FB70D00F598FA /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE60A1F9FB70D00F598FA /* AppColors.swift */; };
+		E8DCE60D1F9FB88600F598FA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE60C1F9FB88600F598FA /* Constants.swift */; };
+		E8DCE60F1F9FBA4900F598FA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE60E1F9FBA4900F598FA /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,10 +61,14 @@
 		E880BB451D327B8D001EF7E3 /* TheMazeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMazeUITests.swift; sourceTree = "<group>"; };
 		E880BB471D327B8D001EF7E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E880BB531D327BD2001EF7E3 /* UpLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpLineView.swift; sourceTree = "<group>"; };
-		E880BB551D327C32001EF7E3 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
-		E880BB571D327D27001EF7E3 /* TableViewCellWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellWithImage.swift; sourceTree = "<group>"; };
+		E880BB551D327C32001EF7E3 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCollectionViewController.swift; sourceTree = "<group>"; };
 		E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTableViewCell.swift; sourceTree = "<group>"; };
+		E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTextTableViewCell.swift; sourceTree = "<group>"; };
+		E8DCE60A1F9FB70D00F598FA /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		E8DCE60C1F9FB88600F598FA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E8DCE60E1F9FBA4900F598FA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +119,12 @@
 		E880BB211D327B8C001EF7E3 /* TheMaze */ = {
 			isa = PBXGroup;
 			children = (
+				E8DCE6051F9FB2EB00F598FA /* Controls */,
+				E8DCE6041F9FB2C900F598FA /* ViewControllers */,
 				E880BB221D327B8C001EF7E3 /* AppDelegate.swift */,
-				E880BB551D327C32001EF7E3 /* ScoreTableViewController.swift */,
-				E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */,
-				E880BB241D327B8C001EF7E3 /* ViewController.swift */,
+				E8DCE60A1F9FB70D00F598FA /* AppColors.swift */,
+				E8DCE60C1F9FB88600F598FA /* Constants.swift */,
 				E880BB531D327BD2001EF7E3 /* UpLineView.swift */,
-				E880BB571D327D27001EF7E3 /* TableViewCellWithImage.swift */,
-				E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */,
 				E880BB261D327B8C001EF7E3 /* Main.storyboard */,
 				E880BB2C1D327B8C001EF7E3 /* Assets.xcassets */,
 				E880BB2E1D327B8C001EF7E3 /* LaunchScreen.storyboard */,
@@ -144,6 +151,27 @@
 				E880BB471D327B8D001EF7E3 /* Info.plist */,
 			);
 			path = TheMazeUITests;
+			sourceTree = "<group>";
+		};
+		E8DCE6041F9FB2C900F598FA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E8DCE60E1F9FBA4900F598FA /* BaseViewController.swift */,
+				E880BB551D327C32001EF7E3 /* ScoreViewController.swift */,
+				E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */,
+				E880BB241D327B8C001EF7E3 /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E8DCE6051F9FB2EB00F598FA /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */,
+				E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */,
+				E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,12 +311,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E880BB2B1D327B8C001EF7E3 /* TheMaze.xcdatamodeld in Sources */,
-				E880BB581D327D27001EF7E3 /* TableViewCellWithImage.swift in Sources */,
+				E8DCE60D1F9FB88600F598FA /* Constants.swift in Sources */,
 				E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */,
 				E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */,
-				E880BB561D327C32001EF7E3 /* ScoreTableViewController.swift in Sources */,
+				E8DCE60B1F9FB70D00F598FA /* AppColors.swift in Sources */,
+				E8DCE60F1F9FBA4900F598FA /* BaseViewController.swift in Sources */,
+				E880BB561D327C32001EF7E3 /* ScoreViewController.swift in Sources */,
+				E8DCE6071F9FB65400F598FA /* RoundedTableViewCell.swift in Sources */,
 				E880BB5C1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift in Sources */,
 				E880BB541D327BD2001EF7E3 /* UpLineView.swift in Sources */,
+				E8DCE6091F9FB66D00F598FA /* ImageTextTableViewCell.swift in Sources */,
 				E880BB5A1D327E7B001EF7E3 /* GameCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,3 +1,12 @@
+// SCORE_VIEW
+"SCORE_VIEW_TITLE" = "The Maze : Menu Principal";
+"SCORE_VIEW_PLAY" = "Jouer";
+"SCORE_VIEW_NO_SCORE" = "Aucun score enregistré";
+"SCORE_VIEW_SCORE_NUMBER" = "Score N°";
+"SCORE_VIEW_POINT" = "point";
+"SCORE_VIEW_POINTS" = "points";
+
+// IMAGE_NAME
 "ICON_SCORE" = "score.png";
 "BORDER_RIGHT_OR_LEFT" = "borderRightOrLeft.png";
 "BORDER_UP_OR_DOWN" = "borderUpOrDown.png";

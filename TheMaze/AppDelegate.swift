@@ -15,35 +15,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    {
         application.isStatusBarHidden = true
         
-        //let viewController = ViewController()
-        //let navigationController = UINavigationController(rootViewController:viewController)
+        let storyboard = UIStoryboard(name: Constants.mainStoryboardId, bundle: nil)
         
-        let scoreTableViewController = ScoreTableViewController(style: .plain)
+        let scoreViewController = storyboard.instantiateViewController(withIdentifier: Constants.scoreViewControllerId)
         
-        let navigationController = UINavigationController(rootViewController: scoreTableViewController)
+        let navigationController = UINavigationController(rootViewController: scoreViewController)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let lagFreeField = UITextField()
-        lagFreeField.becomeFirstResponder()
-        lagFreeField.resignFirstResponder()
-        lagFreeField.removeFromSuperview()
         
         self.window?.rootViewController = navigationController
         
         self.window?.backgroundColor = UIColor.white
         
-        navigationController.navigationBar.barTintColor = UIColor(red:0.498, green:0.776, blue:0.737, alpha:1.0)
+        navigationController.navigationBar.barTintColor = AppColors.greenColor
+        
+        navigationController.toolbar.barTintColor = AppColors.greenColor
         
         let shadow = NSShadow()
-        shadow.shadowColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.8)
+        shadow.shadowColor = AppColors.textShadowColor
         shadow.shadowOffset = CGSize(width: 0,height: 1)
         
-        navigationController.navigationBar.titleTextAttributes = NSDictionary(objects: [UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), shadow, UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], forKeys: [NSForegroundColorAttributeName as NSCopying, NSShadowAttributeName as NSCopying, NSFontAttributeName as NSCopying]) as? [String : AnyObject]
+        navigationController.navigationBar.titleTextAttributes = NSDictionary(objects: [AppColors.textWhiteColor, shadow, UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], forKeys: [NSForegroundColorAttributeName as NSCopying, NSShadowAttributeName as NSCopying, NSFontAttributeName as NSCopying]) as? [String : AnyObject]
         
         navigationController.navigationBar.tintColor = UIColor.white
         
