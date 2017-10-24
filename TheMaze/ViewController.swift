@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private let ulv = UpLineView()
+    fileprivate let ulv = UpLineView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         self.view.addSubview(self.ulv)
         
-        self.ulv.backgroundColor = UIColor.clearColor()
+        self.ulv.backgroundColor = UIColor.clear
         
         // Do any additional setup after loading the view, typically from a nib.
     }

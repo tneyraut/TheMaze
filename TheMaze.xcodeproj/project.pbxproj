@@ -215,13 +215,16 @@
 					E880BB1E1D327B8C001EF7E3 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 774FGZN5LT;
+						LastSwiftMigration = 0820;
 					};
 					E880BB351D327B8D001EF7E3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = E880BB1E1D327B8C001EF7E3;
 					};
 					E880BB401D327B8D001EF7E3 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = E880BB1E1D327B8C001EF7E3;
 					};
 				};
@@ -437,6 +440,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -451,6 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMaze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -462,6 +467,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMazeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheMaze.app/TheMaze";
 			};
 			name = Debug;
@@ -474,6 +480,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMazeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheMaze.app/TheMaze";
 			};
 			name = Release;
@@ -485,6 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMazeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = TheMaze;
 			};
 			name = Debug;
@@ -496,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ThomasNeyraut.iOS.TheMazeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = TheMaze;
 			};
 			name = Release;

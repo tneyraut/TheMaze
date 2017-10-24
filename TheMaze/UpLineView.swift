@@ -8,23 +8,18 @@
 
 import UIKit
 
-class UpLineView: UIView {
-    
+class UpLineView: UIView
+{
     internal let line = UIBezierPath()
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect)
+    {
+        self.backgroundColor = UIColor.clear
         
-        self.backgroundColor = UIColor.clearColor()
+        UIColor.black.setStroke()
+        UIColor.black.setFill()
         
-        UIColor.blackColor().setStroke()
-        UIColor.blackColor().setFill()
         self.line.stroke()
         self.line.lineWidth = 3.0
-        
-        // Mask to Path
-        /*let shapeLayer = CAShapeLayer()
-        shapeLayer.path = line.CGPath
-        self.layer.mask = shapeLayer*/
     }
-
 }

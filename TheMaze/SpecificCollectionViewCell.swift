@@ -10,43 +10,43 @@ import UIKit
 
 class SpecificCollectionViewCell: UICollectionViewCell {
     
-    private var alreadySet = false
+    fileprivate var alreadySet = false
     
     internal var indice = -1
     
-    private var ouverture = ""
+    fileprivate var ouverture = ""
     
-    private let borderRight = UIImageView()
+    fileprivate let borderRight = UIImageView()
     
-    private let borderLeft = UIImageView()
+    fileprivate let borderLeft = UIImageView()
     
-    private let borderUp = UIImageView()
+    fileprivate let borderUp = UIImageView()
     
-    private let borderDown = UIImageView()
+    fileprivate let borderDown = UIImageView()
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         let size = CGFloat(5.0)
         let decalage = CGFloat(0)
         
-        self.borderRight.frame = CGRectMake(self.frame.size.width, -decalage, size, self.frame.size.height + 2 * decalage)
+        self.borderRight.frame = CGRect(x: self.frame.size.width, y: -decalage, width: size, height: self.frame.size.height + 2 * decalage)
         self.borderRight.image = UIImage(named:NSLocalizedString("BORDER_RIGHT_OR_LEFT", comment:""))
-        self.borderRight.hidden = false
+        self.borderRight.isHidden = false
         
-        self.borderLeft.frame = CGRectMake(0, -decalage, size, self.frame.size.height + 2 * decalage)
+        self.borderLeft.frame = CGRect(x: 0, y: -decalage, width: size, height: self.frame.size.height + 2 * decalage)
         self.borderLeft.image = UIImage(named:NSLocalizedString("BORDER_RIGHT_OR_LEFT", comment:""))
-        self.borderLeft.hidden = false
+        self.borderLeft.isHidden = false
         
-        self.borderUp.frame = CGRectMake(-decalage, 0, self.frame.size.width + decalage, size)
+        self.borderUp.frame = CGRect(x: -decalage, y: 0, width: self.frame.size.width + decalage, height: size)
         self.borderUp.image = UIImage(named:NSLocalizedString("BORDER_UP_OR_DOWN", comment:""))
-        self.borderUp.hidden = false
+        self.borderUp.isHidden = false
         
-        self.borderDown.frame = CGRectMake(-decalage, self.frame.size.height, self.frame.size.width + decalage, size)
+        self.borderDown.frame = CGRect(x: -decalage, y: self.frame.size.height, width: self.frame.size.width + decalage, height: size)
         self.borderDown.image = UIImage(named:NSLocalizedString("BORDER_UP_OR_DOWN", comment:""))
-        self.borderDown.hidden = false
+        self.borderDown.isHidden = false
         
         self.addSubview(self.borderRight)
         self.addSubview(self.borderLeft)
@@ -74,7 +74,7 @@ class SpecificCollectionViewCell: UICollectionViewCell {
         return self.alreadySet
     }
     
-    internal func setCellInCollectionView(collectionView: UICollectionView) -> SpecificCollectionViewCell
+    internal func setCellInCollectionView(_ collectionView: UICollectionView) -> SpecificCollectionViewCell
     {
         self.setAlreadySet()
         
@@ -93,72 +93,72 @@ class SpecificCollectionViewCell: UICollectionViewCell {
         }
         if (self.ouverture == "gauche")
         {
-            self.borderLeft.hidden = true
-            cell.borderRight.hidden = true
+            self.borderLeft.isHidden = true
+            cell.borderRight.isHidden = true
         }
         else if (self.ouverture == "droite")
         {
-            self.borderRight.hidden = true
-            cell.borderLeft.hidden = true
+            self.borderRight.isHidden = true
+            cell.borderLeft.isHidden = true
         }
         else if (self.ouverture == "haut")
         {
-            self.borderUp.hidden = true
-            cell.borderDown.hidden = true
+            self.borderUp.isHidden = true
+            cell.borderDown.isHidden = true
         }
         else if (self.ouverture == "bas")
         {
-            self.borderDown.hidden = true
-            cell.borderUp.hidden = true
+            self.borderDown.isHidden = true
+            cell.borderUp.isHidden = true
         }
         return cell
     }
     
-    private func getRandomNeighbourCellInCollectionView(collectionView: UICollectionView) -> SpecificCollectionViewCell
+    fileprivate func getRandomNeighbourCellInCollectionView(_ collectionView: UICollectionView) -> SpecificCollectionViewCell
     {
-        let number = Int(sqrt(Double(collectionView.numberOfItemsInSection(0))))
+        let number = Int(sqrt(Double(collectionView.numberOfItems(inSection: 0))))
         while (true)
         {
             let random = arc4random_uniform(4)
             if (random == 0 && self.indice % number != 0)
             {
                 self.ouverture = "gauche"
-                return collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice - 1, inSection:0)) as! SpecificCollectionViewCell
+                return collectionView.cellForItem(at: IndexPath(row:self.indice - 1, section:0)) as! SpecificCollectionViewCell
             }
             else if (random == 1 && (self.indice + 1) % number != 0)
             {
                 self.ouverture = "droite"
-                return collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice + 1, inSection:0)) as! SpecificCollectionViewCell
+                return collectionView.cellForItem(at: IndexPath(row:self.indice + 1, section:0)) as! SpecificCollectionViewCell
             }
             else if (random == 2 && self.indice - number >= 0)
             {
                 self.ouverture = "haut"
-                return collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice - number, inSection:0)) as! SpecificCollectionViewCell
+                return collectionView.cellForItem(at: IndexPath(row:self.indice - number, section:0)) as! SpecificCollectionViewCell
             }
             else if (random == 3 && self.indice + number < number * number)
             {
                 self.ouverture = "bas"
-                return collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice + number, inSection:0)) as! SpecificCollectionViewCell
+                return collectionView.cellForItem(at: IndexPath(row:self.indice + number, section:0)) as! SpecificCollectionViewCell
             }
         }
     }
     
-    internal func allNeighbourCellAlreadySet(collectionView: UICollectionView) -> Bool
+    internal func allNeighbourCellAlreadySet(_ collectionView: UICollectionView) -> Bool
     {
-        let number = Int(sqrt(Double(collectionView.numberOfItemsInSection(0))))
-        if (self.indice % number != 0 && !(collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice - 1, inSection:0)) as! SpecificCollectionViewCell).isAlreadySet())
+        let number = Int(sqrt(Double(collectionView.numberOfItems(inSection: 0))))
+        if (self.indice % number != 0 && !(collectionView.cellForItem(at: IndexPath(row:self.indice - 1, section:0)) as! SpecificCollectionViewCell).isAlreadySet())
         {
             return false
         }
-        else if ((self.indice + 1) % number != 0 && !(collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice + 1, inSection:0)) as! SpecificCollectionViewCell).isAlreadySet())
+        else if ((self.indice + 1) % number != 0 && !(collectionView.cellForItem(at: IndexPath(row:self.indice + 1, section:0)) as! SpecificCollectionViewCell).isAlreadySet())
         {
             return false
         }
-        else if (self.indice - number >= 0 && !(collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice - number, inSection:0)) as! SpecificCollectionViewCell).isAlreadySet())
+        else if (self.indice - number >= 0 && !(collectionView.cellForItem(at: IndexPath(row:self.indice - number, section:0)) as! SpecificCollectionViewCell).isAlreadySet())
         {
             return false
         }
-        else if (self.indice + number < number * number && !(collectionView.cellForItemAtIndexPath(NSIndexPath(forRow:self.indice + number, inSection:0)) as! SpecificCollectionViewCell).isAlreadySet())
+        else if (self.indice + number < number * number && !(collectionView.cellForItem(at: IndexPath(row:self.indice + number, section:0)) as! SpecificCollectionViewCell).isAlreadySet())
         {
             return false
         }
@@ -167,33 +167,33 @@ class SpecificCollectionViewCell: UICollectionViewCell {
     
     internal func reset()
     {
-        self.backgroundColor = UIColor.clearColor()
-        self.borderDown.hidden = false
-        self.borderUp.hidden = false
-        self.borderRight.hidden = false
-        self.borderLeft.hidden = false
+        self.backgroundColor = UIColor.clear
+        self.borderDown.isHidden = false
+        self.borderUp.isHidden = false
+        self.borderRight.isHidden = false
+        self.borderLeft.isHidden = false
         self.alreadySet = false
         self.ouverture = ""
     }
     
     internal func borderLeftIsHidden() -> Bool
     {
-        return self.borderLeft.hidden
+        return self.borderLeft.isHidden
     }
     
     internal func borderRightIsHidden() -> Bool
     {
-        return self.borderRight.hidden
+        return self.borderRight.isHidden
     }
     
     internal func borderUpIsHidden() -> Bool
     {
-        return self.borderUp.hidden
+        return self.borderUp.isHidden
     }
     
     internal func borderDownIsHidden() -> Bool
     {
-        return self.borderDown.hidden
+        return self.borderDown.isHidden
     }
     
 }

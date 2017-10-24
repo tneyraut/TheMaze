@@ -8,39 +8,52 @@
 
 import UIKit
 import AudioToolbox
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 private let reuseIdentifier = "Cell"
 
 class GameCollectionViewController: UICollectionViewController {
 
-    private var score = 0
+    fileprivate var score = 0
     
-    private var timer = NSTimer()
+    fileprivate var timer = Timer()
     
     internal var scoreTableViewController = ScoreTableViewController()
     
-    private var indiceDepart = -1
+    fileprivate var indiceDepart = -1
     
-    private var indiceArrivee = -1
+    fileprivate var indiceArrivee = -1
     
-    private let ulv = UpLineView()
+    fileprivate let ulv = UpLineView()
     
-    private var touchEnd = true
+    fileprivate var touchEnd = true
     
-    private let label = UILabel()
+    fileprivate let label = UILabel()
     
-    private var chrono = 2.0
+    fileprivate var chrono = 2.0
     
-    private var tempsRestant = 0.0
+    fileprivate var tempsRestant = 0.0
     
-    private var objectifDone = false
+    fileprivate var objectifDone = false
     
-    private var oldPosition = CGPoint()
+    fileprivate var oldPosition = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = UIColor.white
         
         self.title = "Score : " + String(self.score)
         
@@ -48,29 +61,29 @@ class GameCollectionViewController: UICollectionViewController {
         
         let decalage = (self.navigationController?.navigationBar.frame.size.height)! + 20.0
         
-        self.ulv.frame = CGRectMake(0, decalage, self.view.frame.size.width, self.view.frame.size.height - decalage)
+        self.ulv.frame = CGRect(x: 0, y: decalage, width: self.view.frame.size.width, height: self.view.frame.size.height - decalage)
         
-        self.ulv.backgroundColor = UIColor.clearColor()
+        self.ulv.backgroundColor = UIColor.clear
         
         self.view.addSubview(self.ulv)
         
-        self.label.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.size.height)! + 20.0, self.view.frame.size.width, self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! - 20.0)
+        self.label.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.size.height)! + 20.0, width: self.view.frame.size.width, height: self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! - 20.0)
         
-        self.label.layer.borderColor = UIColor(red:213.0/255.0, green:210.0/255.0, blue:199.0/255.0, alpha:1.0).CGColor
+        self.label.layer.borderColor = UIColor(red:213.0/255.0, green:210.0/255.0, blue:199.0/255.0, alpha:1.0).cgColor
         self.label.layer.borderWidth = 2.5
         self.label.layer.cornerRadius = 7.5
-        self.label.layer.shadowOffset = CGSizeMake(0, 1)
-        self.label.layer.shadowColor = UIColor.lightGrayColor().CGColor
+        self.label.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.label.layer.shadowColor = UIColor.lightGray.cgColor
         self.label.layer.shadowRadius = 8.0
         self.label.layer.shadowOpacity = 0.8
         self.label.layer.masksToBounds = false
         
-        self.label.textAlignment = .Center
-        self.label.backgroundColor = UIColor.whiteColor()
+        self.label.textAlignment = .center
+        self.label.backgroundColor = UIColor.white
         self.label.font = UIFont(name:"HelveticaNeue-CondensedBlack", size:30.0)
-        self.label.textColor = UIColor.blackColor()
+        self.label.textColor = UIColor.black
         self.label.text = String(self.chrono)
-        self.label.hidden = false
+        self.label.isHidden = false
         
         self.view.addSubview(self.label)
         
@@ -82,7 +95,7 @@ class GameCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(SpecificCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(SpecificCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -92,7 +105,7 @@ class GameCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated:true)
         
         self.setLevel()
@@ -100,7 +113,7 @@ class GameCollectionViewController: UICollectionViewController {
         super.viewDidAppear(animated)
     }
     
-    private func setLevel()
+    fileprivate func setLevel()
     {
         //self.tempsRestant = self.getTempsImparti()
         //self.setIndicatorTempsRestant()
@@ -109,7 +122,7 @@ class GameCollectionViewController: UICollectionViewController {
         
         self.indiceArrivee = Int(arc4random_uniform(UInt32(number)))
         
-        let cellArrivee = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:self.indiceArrivee, inSection:0)) as! SpecificCollectionViewCell
+        let cellArrivee = self.collectionView?.cellForItem(at: IndexPath(row:self.indiceArrivee, section:0)) as! SpecificCollectionViewCell
         
         var cell = cellArrivee
         
@@ -126,24 +139,24 @@ class GameCollectionViewController: UICollectionViewController {
         self.indiceDepart = cell.indice
         cell.setAlreadySet()
         
-        cell.backgroundColor = UIColor.greenColor()
-        cellArrivee.backgroundColor = UIColor.redColor()
+        cell.backgroundColor = UIColor.green
+        cellArrivee.backgroundColor = UIColor.red
         
-        let limit = self.collectionView?.numberOfItemsInSection(0)
+        let limit = self.collectionView?.numberOfItems(inSection: 0)
         var i = 0
         while (i < limit)
         {
-            let cell = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:i, inSection:0)) as! SpecificCollectionViewCell
+            let cell = self.collectionView?.cellForItem(at: IndexPath(row:i, section:0)) as! SpecificCollectionViewCell
             if (!cell.isAlreadySet())
             {
                 cell.setCellInCollectionView(self.collectionView!)
             }
             i += 1
         }
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target:self, selector:#selector(self.chronometre), userInfo:nil, repeats:true)
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target:self, selector:#selector(self.chronometre), userInfo:nil, repeats:true)
     }
     
-    @objc private func chronometre()
+    @objc fileprivate func chronometre()
     {
         self.chrono -= 0.1
         if (self.chrono > 0.9 && self.chrono < 1)
@@ -156,16 +169,16 @@ class GameCollectionViewController: UICollectionViewController {
         {
             self.timer.invalidate()
             self.label.text = "0"
-            self.label.hidden = true
+            self.label.isHidden = true
             
             self.objectifDone = false
             self.touchEnd = false
             
-            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target:self, selector:#selector(self.tempsImparti), userInfo:nil, repeats:true)
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target:self, selector:#selector(self.tempsImparti), userInfo:nil, repeats:true)
         }
     }
     
-    @objc private func tempsImparti()
+    @objc fileprivate func tempsImparti()
     {
         self.tempsRestant -= 0.1
         if (self.tempsRestant > 0.9 && self.tempsRestant < 1)
@@ -180,17 +193,17 @@ class GameCollectionViewController: UICollectionViewController {
         self.setIndicatorTempsRestant()
     }
     
-    private func resetCollectionView()
+    fileprivate func resetCollectionView()
     {
         self.collectionView?.reloadData()
         
         self.collectionView?.layoutIfNeeded()
         
-        let limit = self.collectionView?.numberOfItemsInSection(0)
+        let limit = self.collectionView?.numberOfItems(inSection: 0)
         var i = 0
         while (i < limit)
         {
-            (self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:i, inSection:0)) as! SpecificCollectionViewCell).reset()
+            (self.collectionView?.cellForItem(at: IndexPath(row:i, section:0)) as! SpecificCollectionViewCell).reset()
             i += 1
         }
         self.indiceDepart = -1
@@ -198,14 +211,14 @@ class GameCollectionViewController: UICollectionViewController {
         self.ulv.line.removeAllPoints()
     }
     
-    private func objectifAtteint()
+    fileprivate func objectifAtteint()
     {
         self.objectifDone = true
         self.touchEnd = true
         self.timer.invalidate()
         
         self.chrono = 2
-        self.label.hidden = false
+        self.label.isHidden = false
         self.label.text = String(self.chrono)
         
         self.score += 1
@@ -219,53 +232,53 @@ class GameCollectionViewController: UICollectionViewController {
         self.setLevel()
     }
     
-    private func endOfGame()
+    fileprivate func endOfGame()
     {
         self.touchEnd = true
         self.timer.invalidate()
         
-        let alertController = UIAlertController(title:"Fin de la partie", message:"La partie est finie, vous avez marqué " + String(self.score) + " point(s).", preferredStyle:.Alert)
+        let alertController = UIAlertController(title:"Fin de la partie", message:"La partie est finie, vous avez marqué " + String(self.score) + " point(s).", preferredStyle:.alert)
         
-        let alertAction = UIAlertAction(title:"OK", style:.Default) { (_) in
+        let alertAction = UIAlertAction(title:"OK", style:.default) { (_) in
             if (self.score > 0)
             {
                 self.scoreTableViewController.gameFinish(self.score)
             }
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
         alertController.addAction(alertAction)
         
         if (!self.objectifDone)
         {
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            presentViewController(alertController, animated:true, completion:nil)
+            present(alertController, animated:true, completion:nil)
         }
     }
 
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (self.touchEnd || self.objectifDone)
         {
             return
         }
         
         let touch = touches.first
-        let currentPos = touch?.locationInView(self.ulv)
+        let currentPos = touch?.location(in: self.ulv)
         self.oldPosition = currentPos!
         
-        if (!self.pointIsInCell(currentPos!, cell:self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:self.indiceDepart, inSection:0)) as! SpecificCollectionViewCell))
+        if (!self.pointIsInCell(currentPos!, cell:self.collectionView?.cellForItem(at: IndexPath(row:self.indiceDepart, section:0)) as! SpecificCollectionViewCell))
         {
             self.endOfGame()
         }
-        self.ulv.line.moveToPoint(currentPos!)
+        self.ulv.line.move(to: currentPos!)
     }
     
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (self.touchEnd || self.objectifDone)
         {
             return
         }
         let touch = touches.first
-        let currentPos = touch?.locationInView(self.ulv)
+        let currentPos = touch?.location(in: self.ulv)
         
         if (self.isBorderCross(self.oldPosition, pointTwo:currentPos!))
         {
@@ -279,28 +292,28 @@ class GameCollectionViewController: UICollectionViewController {
             self.endOfGame()
             return
         }*/
-        if (self.pointIsInCell(currentPos!, cell:self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:self.indiceArrivee, inSection:0)) as! SpecificCollectionViewCell))
+        if (self.pointIsInCell(currentPos!, cell:self.collectionView?.cellForItem(at: IndexPath(row:self.indiceArrivee, section:0)) as! SpecificCollectionViewCell))
         {
             self.objectifAtteint()
         }
-        self.ulv.line.addLineToPoint(currentPos!)
+        self.ulv.line.addLine(to: currentPos!)
         self.ulv.setNeedsDisplay()
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (!self.objectifDone)
         {
             self.touchEnd = true
         }
     }
     
-    private func pointIsInWrongCell(point: CGPoint) -> Bool
+    fileprivate func pointIsInWrongCell(_ point: CGPoint) -> Bool
     {
         let limit = self.getNumberOfItems()
         var i = 0
         while (i < limit)
         {
-            let cell = self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:i, inSection:0)) as! SpecificCollectionViewCell
+            let cell = self.collectionView?.cellForItem(at: IndexPath(row:i, section:0)) as! SpecificCollectionViewCell
             
             if (!cell.isAlreadySet() && self.pointIsInCell(point, cell:cell))
             {
@@ -311,12 +324,12 @@ class GameCollectionViewController: UICollectionViewController {
         return false
     }
     
-    private func pointIsInCell(point: CGPoint, cell: SpecificCollectionViewCell) -> Bool
+    fileprivate func pointIsInCell(_ point: CGPoint, cell: SpecificCollectionViewCell) -> Bool
     {
         return (point.x >= cell.frame.origin.x && point.x <= cell.frame.origin.x + cell.frame.size.width && point.y >= cell.frame.origin.y && point.y <= cell.frame.origin.y + cell.frame.size.height)
     }
     
-    private func isBorderCross(pointOne: CGPoint, pointTwo: CGPoint) -> Bool
+    fileprivate func isBorderCross(_ pointOne: CGPoint, pointTwo: CGPoint) -> Bool
     {
         let number = Int(sqrt(Double(self.getNumberOfItems())))
         
@@ -346,22 +359,22 @@ class GameCollectionViewController: UICollectionViewController {
         return false
     }
     
-    private func getCellContainsPoint(point: CGPoint) -> SpecificCollectionViewCell
+    fileprivate func getCellContainsPoint(_ point: CGPoint) -> SpecificCollectionViewCell
     {
         let limit = self.getNumberOfItems()
         var i = 1
         while (i < limit)
         {
-            if (self.pointIsInCell(point, cell:self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:i, inSection:0)) as! SpecificCollectionViewCell))
+            if (self.pointIsInCell(point, cell:self.collectionView?.cellForItem(at: IndexPath(row:i, section:0)) as! SpecificCollectionViewCell))
             {
-                return self.collectionView?.cellForItemAtIndexPath(NSIndexPath(forRow:i, inSection:0)) as! SpecificCollectionViewCell
+                return self.collectionView?.cellForItem(at: IndexPath(row:i, section:0)) as! SpecificCollectionViewCell
             }
             i += 1
         }
         return SpecificCollectionViewCell()
     }
     
-    private func getNumberOfItems() -> Int
+    fileprivate func getNumberOfItems() -> Int
     {
         var number = 3
         var i = 0
@@ -378,16 +391,16 @@ class GameCollectionViewController: UICollectionViewController {
         return number * number
     }
     
-    private func getTempsImparti() -> Double
+    fileprivate func getTempsImparti() -> Double
     {
         return 5
     }
     
-    private func setIndicatorTempsRestant()
+    fileprivate func setIndicatorTempsRestant()
     {
         let shadow = NSShadow()
         shadow.shadowColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.8)
-        shadow.shadowOffset = CGSizeMake(0, 1)
+        shadow.shadowOffset = CGSize(width: 0, height: 1)
         
         var title = "    Temps restant : " + String(self.tempsRestant) + "s"
         if (self.tempsRestant <= 0)
@@ -395,32 +408,32 @@ class GameCollectionViewController: UICollectionViewController {
             title = "    Temps restant : 0s"
         }
         
-        let rightButton = UIBarButtonItem(title:title, style:UIBarButtonItemStyle.Done, target:nil, action:nil)
-        rightButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], forState:UIControlState.Normal)
+        let rightButton = UIBarButtonItem(title:title, style:UIBarButtonItemStyle.done, target:nil, action:nil)
+        rightButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], for:UIControlState())
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return self.getNumberOfItems()
     }
     
-    func collectionView(collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize
+    func collectionView(_ collectionView : UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:IndexPath) -> CGSize
     {
-        return CGSizeMake(self.view.frame.size.width / CGFloat(sqrt(Double(self.getNumberOfItems()))), (self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! - 20.0) / CGFloat(sqrt(Double(self.getNumberOfItems()))))
+        return CGSize(width: self.view.frame.size.width / CGFloat(sqrt(Double(self.getNumberOfItems()))), height: (self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! - 20.0) / CGFloat(sqrt(Double(self.getNumberOfItems()))))
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! SpecificCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SpecificCollectionViewCell
     
-        cell.backgroundColor = UIColor.whiteColor()
+        cell.backgroundColor = UIColor.white
         
         cell.indice = indexPath.row
         
