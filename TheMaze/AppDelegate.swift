@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         shadow.shadowColor = AppColors.textShadowColor
         shadow.shadowOffset = CGSize(width: 0,height: 1)
         
-        navigationController.navigationBar.titleTextAttributes = NSDictionary(objects: [AppColors.textWhiteColor, shadow, UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], forKeys: [NSForegroundColorAttributeName as NSCopying, NSShadowAttributeName as NSCopying, NSFontAttributeName as NSCopying]) as? [String : AnyObject]
+        navigationController.navigationBar.titleTextAttributes = NSDictionary(objects: [AppColors.textWhiteColor, shadow, UIFont(name:Constants.fontName, size:21.0)!], forKeys: [NSForegroundColorAttributeName as NSCopying, NSShadowAttributeName as NSCopying, NSFontAttributeName as NSCopying]) as? [String : AnyObject]
         
         navigationController.navigationBar.tintColor = UIColor.white
         

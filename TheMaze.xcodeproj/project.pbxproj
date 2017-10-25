@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E802E6F41FA0CBF200BDC998 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E802E6F31FA0CBF200BDC998 /* RoundedLabel.swift */; };
 		E86C04C31D32B43300BE40FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E86C04C21D32B43300BE40FD /* Localizable.strings */; };
 		E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB221D327B8C001EF7E3 /* AppDelegate.swift */; };
 		E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB241D327B8C001EF7E3 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E802E6F31FA0CBF200BDC998 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
 		E86C04C21D32B43300BE40FD /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E880BB1F1D327B8C001EF7E3 /* TheMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E880BB221D327B8C001EF7E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +126,6 @@
 				E880BB221D327B8C001EF7E3 /* AppDelegate.swift */,
 				E8DCE60A1F9FB70D00F598FA /* AppColors.swift */,
 				E8DCE60C1F9FB88600F598FA /* Constants.swift */,
-				E880BB531D327BD2001EF7E3 /* UpLineView.swift */,
 				E880BB261D327B8C001EF7E3 /* Main.storyboard */,
 				E880BB2C1D327B8C001EF7E3 /* Assets.xcassets */,
 				E880BB2E1D327B8C001EF7E3 /* LaunchScreen.storyboard */,
@@ -170,6 +171,8 @@
 				E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */,
 				E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */,
 				E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */,
+				E880BB531D327BD2001EF7E3 /* UpLineView.swift */,
+				E802E6F31FA0CBF200BDC998 /* RoundedLabel.swift */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				E8DCE60D1F9FB88600F598FA /* Constants.swift in Sources */,
 				E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */,
 				E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */,
+				E802E6F41FA0CBF200BDC998 /* RoundedLabel.swift in Sources */,
 				E8DCE60B1F9FB70D00F598FA /* AppColors.swift in Sources */,
 				E8DCE60F1F9FBA4900F598FA /* BaseViewController.swift in Sources */,
 				E880BB561D327C32001EF7E3 /* ScoreViewController.swift in Sources */,

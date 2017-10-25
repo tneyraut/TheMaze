@@ -20,7 +20,7 @@ class BaseViewController : UIViewController
         
         let button = UIBarButtonItem(title: title, style: .plain, target:target, action: selector)
         
-        button.setTitleTextAttributes([NSForegroundColorAttributeName: AppColors.textWhiteColor, NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size:21.0)!], for:UIControlState())
+        button.setTitleTextAttributes([NSForegroundColorAttributeName: AppColors.textWhiteColor, NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:Constants.fontName, size:21.0)!], for:UIControlState())
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target:nil, action:nil)
         

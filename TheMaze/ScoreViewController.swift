@@ -19,6 +19,8 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         self.title = NSLocalizedString("SCORE_VIEW_TITLE", comment: "")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(gameOver), name: Notification.Name.init(Constants.gameOverMessage), object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool)
@@ -41,8 +43,6 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         let gameCollectionViewController = GameCollectionViewController(collectionViewLayout:layout)
         
-        gameCollectionViewController.scoreTableViewController = self
-        
         self.navigationController?.pushViewController(gameCollectionViewController, animated:true)
     }
     
@@ -51,13 +51,15 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
         return self.userDefaults.integer(forKey: Constants.numberOfScoresCacheKey)
     }
     
-    internal func gameFinish(_ score: Int)
+    internal func gameOver(notification: NSNotification)
     {
+        let score = notification.object as! Int
+        
         if score == 0
         {
             return
         }
-        if self.userDefaults.integer(forKey: Constants.numberOfScoresCacheKey) < 10
+        if self.userDefaults.integer(forKey: Constants.numberOfScoresCacheKey) < Constants.limitNbScores
         {
             self.userDefaults.set(self.userDefaults.integer(forKey: Constants.numberOfScoresCacheKey) + 1, forKey: Constants.numberOfScoresCacheKey)
         }
@@ -68,7 +70,7 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
         else
         {
             var i = 0
-            while i < self.getNumberOfItems() && i < 10
+            while i < self.getNumberOfItems() && i < Constants.limitNbScores
             {
                 if self.userDefaults.integer(forKey: "\(Constants.scoreCacheKey)\(i)") < score
                 {
@@ -88,7 +90,7 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
                 i += 1
             }
             
-            i = 10
+            i = Constants.limitNbScores
             while i < self.getNumberOfItems()
             {
                 self.userDefaults.removeObject(forKey: "\(Constants.scoreCacheKey)\(i)")

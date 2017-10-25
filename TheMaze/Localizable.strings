@@ -6,6 +6,9 @@
 "SCORE_VIEW_POINT" = "point";
 "SCORE_VIEW_POINTS" = "points";
 
+// GAME_VIEW
+"GAME_VIEW_TITLE" = "Score :";
+
 // IMAGE_NAME
 "ICON_SCORE" = "score.png";
 "BORDER_RIGHT_OR_LEFT" = "borderRightOrLeft.png";
