@@ -18,6 +18,9 @@ class ScoreViewController: BaseViewController, UITableViewDelegate, UITableViewD
     {
         super.viewDidLoad()
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         self.title = NSLocalizedString("SCORE_VIEW_TITLE", comment: "")
         
         NotificationCenter.default.addObserver(self, selector: #selector(gameOver), name: Notification.Name.init(Constants.gameOverMessage), object: nil)

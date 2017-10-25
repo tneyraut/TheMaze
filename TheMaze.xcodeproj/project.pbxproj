@@ -21,6 +21,7 @@
 		E880BB561D327C32001EF7E3 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB551D327C32001EF7E3 /* ScoreViewController.swift */; };
 		E880BB5A1D327E7B001EF7E3 /* GameCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */; };
 		E880BB5C1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */; };
+		E8B1CC771FA0FCD0007C2BDA /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B1CC761FA0FCD0007C2BDA /* ViewControllerExtension.swift */; };
 		E8DCE6071F9FB65400F598FA /* RoundedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */; };
 		E8DCE6091F9FB66D00F598FA /* ImageTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */; };
 		E8DCE60B1F9FB70D00F598FA /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DCE60A1F9FB70D00F598FA /* AppColors.swift */; };
@@ -66,6 +67,7 @@
 		E880BB551D327C32001EF7E3 /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCollectionViewController.swift; sourceTree = "<group>"; };
 		E880BB5B1D327EF9001EF7E3 /* SpecificCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8B1CC761FA0FCD0007C2BDA /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		E8DCE6061F9FB65400F598FA /* RoundedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedTableViewCell.swift; sourceTree = "<group>"; };
 		E8DCE6081F9FB66D00F598FA /* ImageTextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTextTableViewCell.swift; sourceTree = "<group>"; };
 		E8DCE60A1F9FB70D00F598FA /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		E880BB211D327B8C001EF7E3 /* TheMaze */ = {
 			isa = PBXGroup;
 			children = (
+				E8B1CC751FA0FCAA007C2BDA /* Extensions */,
 				E8DCE6051F9FB2EB00F598FA /* Controls */,
 				E8DCE6041F9FB2C900F598FA /* ViewControllers */,
 				E880BB221D327B8C001EF7E3 /* AppDelegate.swift */,
@@ -152,6 +155,14 @@
 				E880BB471D327B8D001EF7E3 /* Info.plist */,
 			);
 			path = TheMazeUITests;
+			sourceTree = "<group>";
+		};
+		E8B1CC751FA0FCAA007C2BDA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E8B1CC761FA0FCD0007C2BDA /* ViewControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		E8DCE6041F9FB2C900F598FA /* ViewControllers */ = {
@@ -315,6 +326,7 @@
 			files = (
 				E880BB2B1D327B8C001EF7E3 /* TheMaze.xcdatamodeld in Sources */,
 				E8DCE60D1F9FB88600F598FA /* Constants.swift in Sources */,
+				E8B1CC771FA0FCD0007C2BDA /* ViewControllerExtension.swift in Sources */,
 				E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */,
 				E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */,
 				E802E6F41FA0CBF200BDC998 /* RoundedLabel.swift in Sources */,

@@ -13,35 +13,25 @@ private let reuseIdentifier = "Cell"
 
 class GameCollectionViewController: UICollectionViewController
 {
-    fileprivate var score = 0
-    
-    fileprivate var timer = Timer()
-    
-    fileprivate var indiceDepart = -1
-
-    fileprivate var indiceArrivee = -1
-    
+    fileprivate let label = RoundedLabel()
     fileprivate let ulv = UpLineView()
     
-    fileprivate var touchEnd = true
-    
-    fileprivate let label = RoundedLabel()
-    
-    fileprivate var chrono = 2.0
-    
-    fileprivate var tempsRestant = 0.0
-    
-    fileprivate var objectifDone = false
-    
+    fileprivate var timer = Timer()
     fileprivate var oldPosition: CGPoint?
+    
+    fileprivate var score = 0
+    fileprivate var indiceDepart = -1
+    fileprivate var indiceArrivee = -1
+    fileprivate var touchEnd = true
+    fileprivate var chrono = 2.0
+    fileprivate var tempsRestant = 0.0
+    fileprivate var objectifDone = false
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         self.collectionView?.backgroundColor = UIColor.white
-        
-        self.title = "\(NSLocalizedString("GAME_VIEW_TITLE", comment: "")) \(self.score)"
         
         self.navigationItem.setHidesBackButton(true, animated:true)
         
@@ -62,7 +52,7 @@ class GameCollectionViewController: UICollectionViewController
         
         self.tempsRestant = self.getTempsImparti()
         
-        self.setIndicatorTempsRestant()
+        updateTimeLeftAndScore()
         
         // Register cell classes
         self.collectionView!.register(SpecificCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -156,7 +146,7 @@ class GameCollectionViewController: UICollectionViewController
             self.endOfGame()
         }
         
-        self.setIndicatorTempsRestant()
+        self.updateTimeLeftAndScore()
     }
     
     fileprivate func resetCollectionView()
@@ -189,11 +179,11 @@ class GameCollectionViewController: UICollectionViewController
         self.label.text = String(self.chrono)
         
         self.score += 1
-        self.title = "Score : " + String(self.score)
         
         self.tempsRestant += 1.0
         self.tempsRestant = Double(round(10 * self.tempsRestant) / 10)
-        self.setIndicatorTempsRestant()
+        
+        self.updateTimeLeftAndScore()
         
         self.resetCollectionView()
         self.setLevel()
@@ -204,14 +194,19 @@ class GameCollectionViewController: UICollectionViewController
         self.touchEnd = true
         self.timer.invalidate()
         
-        let alertController = UIAlertController(title:"Fin de la partie", message:"La partie est finie, vous avez marqué " + String(self.score) + " point(s).", preferredStyle:.alert)
+        let alertController = UIAlertController(
+            title: NSLocalizedString("GAME_VIEW_GAME_OVER_TITLE", comment: ""),
+            message: "\(NSLocalizedString("GAME_VIEW_GAME_OVER_MESSAGE", comment: "")) \(self.score) \(self.score > 1 ? NSLocalizedString("GAME_VIEW_POINTS", comment: "") : NSLocalizedString("GAME_VIEW_POINT", comment: "")).",
+            preferredStyle:.alert)
         
-        let alertAction = UIAlertAction(title:"OK", style:.default) { (_) in
+        let alertAction = UIAlertAction(title: NSLocalizedString("GAME_VIEW_OK", comment: ""), style:.default) { (_) in
             if self.score > 0
             {
-                //self.scoreTableViewController.gameFinish(self.score)
+                NotificationCenter.default.post(
+                    name: Notification.Name.init(Constants.gameOverMessage),
+                    object: self.score)
             }
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         alertController.addAction(alertAction)
         
@@ -364,21 +359,11 @@ class GameCollectionViewController: UICollectionViewController
         return 5
     }
     
-    fileprivate func setIndicatorTempsRestant()
+    fileprivate func updateTimeLeftAndScore()
     {
-        let shadow = NSShadow()
-        shadow.shadowColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.8)
-        shadow.shadowOffset = CGSize(width: 0, height: 1)
+        setRightNavBarButton(title: "\(NSLocalizedString("GAME_VIEW_TIME_LEFT", comment: "")) \(self.tempsRestant < 0.1 ? 0 : self.tempsRestant)s")
         
-        var title = "    Temps restant : " + String(self.tempsRestant) + "s"
-        if self.tempsRestant <= 0
-        {
-            title = "    Temps restant : 0s"
-        }
-        
-        let rightButton = UIBarButtonItem(title:title, style:UIBarButtonItemStyle.done, target:nil, action:nil)
-        rightButton.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red:245.0/255.0, green:245.0/255.0, blue:245.0/255.0, alpha:1.0), NSShadowAttributeName: shadow, NSFontAttributeName: UIFont(name:Constants.fontName, size:21.0)!], for:UIControlState())
-        self.navigationItem.rightBarButtonItem = rightButton
+        setLeftNavBarButton(title: "\(NSLocalizedString("GAME_VIEW_TITLE", comment: "")) \(self.score)")
     }
     
     // MARK: UICollectionViewDataSource

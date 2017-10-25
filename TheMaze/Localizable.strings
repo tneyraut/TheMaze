@@ -8,6 +8,12 @@
 
 // GAME_VIEW
 "GAME_VIEW_TITLE" = "Score :";
+"GAME_VIEW_GAME_OVER_TITLE" = "Fin de la partie";
+"GAME_VIEW_GAME_OVER_MESSAGE" = "La partie est finie, vous avez marqué";
+"GAME_VIEW_POINT" = "point";
+"GAME_VIEW_POINTS" = "points";
+"GAME_VIEW_OK" = "OK";
+"GAME_VIEW_TIME_LEFT" = "Temps restant :";
 
 // IMAGE_NAME
 "ICON_SCORE" = "score.png";
