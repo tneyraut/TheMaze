@@ -10,7 +10,6 @@
 		E802E6F41FA0CBF200BDC998 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E802E6F31FA0CBF200BDC998 /* RoundedLabel.swift */; };
 		E86C04C31D32B43300BE40FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E86C04C21D32B43300BE40FD /* Localizable.strings */; };
 		E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB221D327B8C001EF7E3 /* AppDelegate.swift */; };
-		E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E880BB241D327B8C001EF7E3 /* ViewController.swift */; };
 		E880BB281D327B8C001EF7E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E880BB261D327B8C001EF7E3 /* Main.storyboard */; };
 		E880BB2B1D327B8C001EF7E3 /* TheMaze.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E880BB291D327B8C001EF7E3 /* TheMaze.xcdatamodeld */; };
 		E880BB2D1D327B8C001EF7E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E880BB2C1D327B8C001EF7E3 /* Assets.xcassets */; };
@@ -51,7 +50,6 @@
 		E86C04C21D32B43300BE40FD /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E880BB1F1D327B8C001EF7E3 /* TheMaze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMaze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E880BB221D327B8C001EF7E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E880BB241D327B8C001EF7E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E880BB271D327B8C001EF7E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E880BB2A1D327B8C001EF7E3 /* TheMaze.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheMaze.xcdatamodel; sourceTree = "<group>"; };
 		E880BB2C1D327B8C001EF7E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				E8DCE60E1F9FBA4900F598FA /* BaseViewController.swift */,
 				E880BB551D327C32001EF7E3 /* ScoreViewController.swift */,
 				E880BB591D327E7B001EF7E3 /* GameCollectionViewController.swift */,
-				E880BB241D327B8C001EF7E3 /* ViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -327,7 +324,6 @@
 				E880BB2B1D327B8C001EF7E3 /* TheMaze.xcdatamodeld in Sources */,
 				E8DCE60D1F9FB88600F598FA /* Constants.swift in Sources */,
 				E8B1CC771FA0FCD0007C2BDA /* ViewControllerExtension.swift in Sources */,
-				E880BB251D327B8C001EF7E3 /* ViewController.swift in Sources */,
 				E880BB231D327B8C001EF7E3 /* AppDelegate.swift in Sources */,
 				E802E6F41FA0CBF200BDC998 /* RoundedLabel.swift in Sources */,
 				E8DCE60B1F9FB70D00F598FA /* AppColors.swift in Sources */,
