@@ -143,7 +143,7 @@ class GameCollectionViewController: UICollectionViewController
         
         if self.tempsRestant <= 0 && !self.objectifDone
         {
-            self.endOfGame()
+            //self.endOfGame()
         }
         
         self.updateTimeLeftAndScore()
@@ -299,27 +299,10 @@ class GameCollectionViewController: UICollectionViewController
         let cellOne = self.getCellContainsPoint(pointOne)
         let cellTwo = self.getCellContainsPoint(pointTwo)
         
-        if cellTwo.indice == cellOne.indice - 1 && !cellOne.borderLeftIsHidden() && !cellTwo.borderRightIsHidden()
-        {
-            // cell2 à gauche
-            return true
-        }
-        else if cellTwo.indice == cellOne.indice + 1 && !cellOne.borderRightIsHidden() && !cellTwo.borderLeftIsHidden()
-        {
-            // cell2 à Droite
-            return true
-        }
-        else if cellTwo.indice == cellOne.indice - number && !cellOne.borderUpIsHidden() && !cellTwo.borderDownIsHidden()
-        {
-            // cell2 en haut
-            return true
-        }
-        else if cellTwo.indice == cellOne.indice + number && !cellOne.borderDownIsHidden() && !cellTwo.borderUpIsHidden()
-        {
-            // cell2 en bas
-            return true
-        }
-        return false
+        return (cellTwo.indice == cellOne.indice - 1 && !cellOne.borderLeftIsHidden() && !cellTwo.borderRightIsHidden()) ||
+            (cellTwo.indice == cellOne.indice + 1 && !cellOne.borderRightIsHidden() && !cellTwo.borderLeftIsHidden()) ||
+            (cellTwo.indice == cellOne.indice - number && !cellOne.borderUpIsHidden() && !cellTwo.borderDownIsHidden()) ||
+            (cellTwo.indice == cellOne.indice + number && !cellOne.borderDownIsHidden() && !cellTwo.borderUpIsHidden())
     }
     
     fileprivate func getCellContainsPoint(_ point: CGPoint) -> SpecificCollectionViewCell

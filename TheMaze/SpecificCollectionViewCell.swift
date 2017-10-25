@@ -30,21 +30,20 @@ class SpecificCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = UIColor.clear
         
         let size = CGFloat(5.0)
-        let decalage = CGFloat(0)
         
-        self.borderRight.frame = CGRect(x: self.frame.size.width, y: -decalage, width: size, height: self.frame.size.height + 2 * decalage)
+        self.borderRight.frame = CGRect(x: self.frame.size.width, y: 0, width: size, height: self.frame.size.height)
         self.borderRight.image = UIImage(named:NSLocalizedString("BORDER_RIGHT_OR_LEFT", comment:""))
         self.borderRight.isHidden = false
         
-        self.borderLeft.frame = CGRect(x: 0, y: -decalage, width: size, height: self.frame.size.height + 2 * decalage)
+        self.borderLeft.frame = CGRect(x: 0, y: 0, width: size, height: self.frame.size.height)
         self.borderLeft.image = UIImage(named:NSLocalizedString("BORDER_RIGHT_OR_LEFT", comment:""))
         self.borderLeft.isHidden = false
         
-        self.borderUp.frame = CGRect(x: -decalage, y: 0, width: self.frame.size.width + decalage, height: size)
+        self.borderUp.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: size)
         self.borderUp.image = UIImage(named:NSLocalizedString("BORDER_UP_OR_DOWN", comment:""))
         self.borderUp.isHidden = false
         
-        self.borderDown.frame = CGRect(x: -decalage, y: self.frame.size.height, width: self.frame.size.width + decalage, height: size)
+        self.borderDown.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width + 5, height: size)
         self.borderDown.image = UIImage(named:NSLocalizedString("BORDER_UP_OR_DOWN", comment:""))
         self.borderDown.isHidden = false
         
